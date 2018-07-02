@@ -4,3 +4,69 @@
   --><%= link_to "우드", add_query(cate: "wood") %><!--
   --><%= link_to "기타", add_query(cate: "etc") %>
 </div>
+
+<ul class="list">
+
+  <% if params[:cate].blank? || params[:cate] == "carbon" %>
+  <li>
+    <%= link_to image_tag("/images/fc-01.jpg"), image_path("/images/fc-01.jpg") %>
+    <div class="exp">
+      <h5><span>카본 01</span></h5>
+    </div>
+  </li>
+
+  <li>
+    <%= link_to image_tag("/images/fc-02.jpg"), image_path("/images/fc-02.jpg") %>
+    <div class="exp">
+      <h5><span>카본 02</span></h5>
+    </div>
+  </li>
+
+  <li>
+    <%= link_to image_tag("/images/fc-03.jpg"), image_path("/images/fc-03.jpg") %>
+    <div class="exp">
+      <h5><span>카본 03</span></h5>
+    </div>
+  </li>
+
+  <li>
+    <%= link_to image_tag("/images/fc-04.jpg"), image_path("/images/fc-04.jpg") %>
+    <div class="exp">
+      <h5><span>카본 04</span></h5>
+    </div>
+  </li>
+  <% end %>
+
+  <% if params[:cate].blank? || params[:cate] == "wood" %>
+  <li>
+    <%= link_to image_tag("/images/fw-01.jpg"), image_path("/images/fw-01.jpg") %>
+    <div class="exp">
+      <h5><span>우드 01</span></h5>
+    </div>
+  </li>
+
+  <li>
+    <%= link_to image_tag("/images/fw-02.jpg"), image_path("/images/fw-02.jpg") %>
+    <div class="exp">
+      <h5><span>우드 02</span></h5>
+    </div>
+  </li>
+  <% end %>
+
+  <% if params[:cate].blank? || params[:cate] == "etc" %>
+  <li>
+    <%= link_to image_tag("/images/fe-01.jpg"), image_path("/images/fe-01.jpg") %>
+    <div class="exp">
+      <h5><span>기타 01</span></h5>
+    </div>
+  </li>
+
+  <li>
+    <%= link_to image_tag("/images/fe-02.jpg"), image_path("/images/fe-02.jpg") %>
+    <div class="exp">
+      <h5><span>기타 02</span></h5>
+    </div>
+  </li>
+  <% end %>
+
+</ul>

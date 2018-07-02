@@ -15,7 +15,7 @@
       --><%= link_to "#{icon('fas', 'tape')}필름".html_safe, films_path, class: path_match?(controllers: "main", actions: "films") %><!--
       --><%= link_to "#{icon('fas', 'camera-retro')}포토".html_safe, photos_path, class: path_match?(controllers: "main", actions: "photos") %><!--
       --><%= link_to "#{icon('fas', 'dollar-sign')}견적".html_safe, pricing_path, class: path_match?(controllers: "main", actions: "pricing") %><!--
-      --><%= link_to "#{icon('fas', 'question')}문의".html_safe, ask_path, class: path_match?(controllers: "main", actions: "ask") %>
+      --><%= link_to "#{icon('fas', 'question')}문의".html_safe, new_ask_path, class: path_match?(controllers: "asks") %>
     </div>
 
     <header>

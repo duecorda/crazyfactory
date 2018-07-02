@@ -118,6 +118,67 @@ section {
     }
   }
 
+  div.ask {
+    h5 {
+      border: none;
+      padding: 8px 8px 8px 7px;
+    }
+
+    form {
+      padding: 8px 8px 0 7px;;
+      textarea.text {
+        border: 1px solid #c7c7c7;
+        font-size: medium;
+        padding: 8px 8px 8px 7px;
+        line-height: 1.4;
+        color: #111;
+        width: 100%;
+        resize: none;
+      }
+      .actions {
+        button.submit {
+          width: 100%;
+          border: 1px solid #c7c7c7;
+          background-color: #fafafa;
+          line-height: 1.5;
+          padding: 8px;
+        }
+      }
+    }
+  }
+
+  ul.ask-list {
+    li {
+      padding: 8px 8px 8px 7px;
+      line-height: 1.2;
+      position: relative;
+
+      span {
+        font-size: small;
+        color: #777;
+        display: block;
+        padding-bottom: 5px;
+      }
+      strong {
+        font-size: small;
+        color: #333;
+        font-weight: bold;
+        display: block;
+        padding-bottom: 5px;
+      }
+
+      .content {
+        line-height: 1.4;
+      }
+
+      .answer {
+        margin: 8px;
+        padding: 12px 0 0 16px;
+        border-left: 8px solid #c7c7c7;
+      }
+    }
+  }
+
   ul.list {
     li {
       img {
@@ -130,6 +191,11 @@ section {
 
         h5 {
           border: none;
+        }
+
+        div.desc {
+          font-size: small;
+          padding-bottom: 8px;
         }
 
         div.price {
