@@ -1,0 +1,30 @@
+<div class="wrapper nm">
+  <%= image_tag("/images/logo.jpg", class: "nb") %>
+</div>
+
+<div class="wrapper">
+  <%= link_to image_tag("/images/shop01.jpg"), image_path("/images/shop01.jpg") %>
+  <%= link_to image_tag("/images/shop02.jpg"), image_path("/images/shop02.jpg") %>
+  <%= link_to image_tag("/images/shop03.jpg"), image_path("/images/shop03.jpg") %>
+  <%= link_to image_tag("/images/shop04.jpg"), image_path("/images/shop04.jpg") %>
+  <%= link_to image_tag("/images/shop05.jpg"), image_path("/images/shop05.jpg") %>
+</div>
+
+<div class="wrapper">
+<h5><%= icon("far", "map") %> 주소</h5>
+<div class="container">
+  <span>지번</span> <%= link_to "인천 중구 운남동 168-48", "http://naver.me/GVuXriKt", target: "_blank" %><br/>
+  <span>도로명</span> <%= link_to "인천광역시 중구 백운로228번길 188-49", "http://naver.me/GVuXriKt", target: "_blank" %>
+</div>
+</div>
+
+<div class="wrapper">
+<h5><%= icon("fas", "phone spin-180") %> 문의</h5>
+<div class="container">
+  <span>카톡</span> <a href="https://open.kakao.com/o/scQdA9N" target="_blank">https://open.kakao.com/o/scQdA9N</a><br/>
+  <span>전화</span> <a href="tel://01098960000" target="_blank">010 9896 0000</a><br/>
+  <span>이메일</span> <a href="mailto://moonshcustom@gmail.com" target="_blank">moonshcustom@gmail.com</a><br/>
+  <span>블로그</span> <a href="http://blog.naver.com/crazyfactory1" target="_blank">http://blog.naver.com/crazyfactory1</a>
+</div>
+</div>
+

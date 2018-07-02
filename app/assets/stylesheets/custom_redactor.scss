@@ -1,0 +1,499 @@
+#redactor-progress {
+  span {
+    display: none;
+  }
+}
+
+#extra-toolbar {
+  box-shadow: 0 0 5px $c_border_light;
+  border: 1px solid $c_border_light;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 101;
+  cursor: move;
+  background-color: $c_header_bg;
+  padding-top: 18px;
+  &:after {
+    position: absolute;
+    top: 4px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    content: '\f141';
+    font-family: 'fontAwesome';
+    color: $c_text_lighten;
+    font-size: 0.8rem;
+  }
+  a.toolbar-item {
+    background-color: white;
+    padding: 10px 10px;
+    display: block;
+    color: $c_text_light;
+    font-size: 0.9rem;
+    font-family: sans-serif;
+    border-top: 1px solid $c_border_light;
+    &:hover {
+      background-color: $c_light_blue;
+      color: white;
+    }
+  }
+}
+
+.redactor-toolbar {
+  box-shadow: none;
+  border: 1px solid $c_border;
+  margin-bottom: 0.5rem !important;
+  li {
+    a {
+      padding: 10px 12px;
+      font-weight: 500;
+      color: $c_text_light;
+      &:hover, &:active {
+        background-color: $c_light_blue;
+        color: white;
+      }
+    }
+  }
+}
+
+.redactor-air {
+  min-width: 120px;
+  background-color: $c_header_text;
+  li {
+    a {
+      font-size: 0.9rem;
+      font-family: sans-serif;
+      padding: 10px 12px;
+      color: $c_text_dark_white;
+      &:hover, &:active, &:focus, &.redactor-act {
+        background-color: $c_light_blue;
+        color: white;
+      }
+    }
+  }
+}
+
+.redactor-box {
+  border: none;
+}
+.redactor-editor {
+  border: 1px solid $c_border;
+}
+
+.redactor-dropdown {
+  box-shadow: 0 0 10px $c_border_light !important;
+  border: 1px solid $c_border_light;
+  min-width: 180px;
+
+  li {
+    border-bottom: 1px solid $c_border_light !important;
+    a {
+      padding: 10px 15px;
+      &:hover, &:active, &:focus {
+        background-color: $c_light_blue;
+      }
+      span {
+        display: block;
+      }
+    }
+  }
+
+  .redactor-dropdown-p,
+  .redactor-dropdown-h1,
+  .redactor-dropdown-h2,
+  .redactor-dropdown-h3,
+  .redactor-dropdown-pre,
+  .redactor-dropdown-link,
+  .redactor-dropdown-unlink,
+  .redactor-dropdown-blockquote {
+    font-size: 0.8rem !important;
+    line-height: 1.4 !important;
+    font-style: normal;
+    font-family: sans-serif;
+    font-weight: normal;
+    color: $c_text;
+    sub {
+      float: right;
+      color: $c_text_lighten;
+      font-style: italic;
+    }
+  }
+
+}
+
+#redactor-modal {
+  border: 1px solid $c_border_light;
+  box-shadow: none !important;
+  border-radius: 4px;
+  overflow: hidden;
+  height: auto !important;
+  font-family: sans-serif;
+  header {
+    background-color: #494949;
+    color: $c_text_lightest;
+    padding: 10px 15px !important;
+    font-size: 0.8rem !important;
+    font-weight: normal !important;
+  }
+  #redactor-modal-header {
+    padding: 15px;
+  }
+  button#redactor-modal-close {
+    top: 0;
+    line-height: 1;
+    font-size: 2rem;
+  }
+  #redactor-modal-body {
+    padding: 5px 15px 15px;
+    section {
+      margin-bottom: 15px;
+
+      label {
+        color: $c_text_light;
+        font-size: 0.8rem;
+        line-height: 1.6;
+      }
+
+      .field {
+        border: 1px solid $c_border_light;
+        padding: 6px 8px;
+        textarea {
+          margin: 0;
+          padding: 0;
+          box-shadow: none;
+          border: none;
+          outline: none;
+          font-size: 0.8rem;
+          resize: none;
+          height: auto;
+        }
+      }
+
+      label {
+        color: $c_text_light;
+        font-size: 0.8rem;
+        line-height: 1.6;
+      }
+
+      input[type="text"],
+      input[type="password"],
+      input[type="email"],
+      input[type="url"],
+      textarea {
+        width: 100%;
+        outline: none;
+        resize: none;
+        border: none;
+        margin: 0;
+        border: 1px solid $c_border_light;
+        color: $c_text;
+        font-size: 0.9rem;
+        line-height: 1.2;
+        box-shadow: none;
+        border-radius: 2px;
+        padding: 6px 8px;
+        &:hover, &:active, &:focus {
+          border: 1px solid $c_border;
+        }
+      }
+
+      button {
+        &#redactor-modal-button-action, &#redactor-modal-button-cancel {
+          width: auto;
+          display: inline-block;
+          border: 1px solid $c_border;
+          border-radius: 2px;
+          color: $c_text;
+          font-size: 0.8rem;
+          padding: 8px 18px;
+          height: auto;
+          margin: 0 0.2rem;
+          background-color: #ffffff;
+          cursor: pointer;
+          outline: none;
+          &:hover {
+            color: darken($c_text, 20);
+            border-color: darken($c_border_light, 20);
+          }
+        }
+        &#redactor-modal-button-action {
+          background-color: $c_light_blue;
+          border: 1px solid $c_light_blue;
+          color: white;
+        }
+      }
+
+      dl {
+        font-size: 0.9rem;
+        color: $c_text;
+        line-height: 1.8;
+        dt {
+          color: $c_text_light;
+          width: 60px;
+          float: left;
+          clear: left;
+        }
+        dd {
+          clear: right;
+        }
+      }
+
+    }
+  }
+}
+
+.ra_widget {
+  div.ra_widget_content {
+    width: 100%;
+
+    a#photo_upload_indicator {
+      font-size: 0.8rem;
+      width: 140px;
+      overflow: hidden;
+
+      &.full {
+        width: 100%;
+        margin-bottom: 15px;
+
+        .finder {
+          padding: 10px;
+        }
+        .progress {
+          padding: 10px;
+        }
+      }
+
+      .finder {
+        padding: 7px 10px;
+        display: block;
+      }
+      .progress {
+        width: 0%;
+        padding: 6px 10px;
+        background-color: $c_light_blue;
+        @include transition(all, .8s, ease);
+        display: none;
+      }
+      &.active {
+        .finder { display: none; }
+        .progress { display: block; }
+      }
+    }
+
+    a#clip_upload_indicator {
+      font-size: 0.8rem;
+      width: 100px;
+      overflow: hidden;
+      .finder {
+        padding: 6px 10px;
+        display: block;
+      }
+      .progress {
+        width: 0%;
+        padding: 6px 10px;
+        background-color: $c_light_blue;
+        @include transition(all, .8s, ease);
+        display: none;
+      }
+      &.active {
+        .finder { display: none; }
+        .progress { display: block; }
+      }
+    }
+
+    a#cover_upload_indicator, a#subcover_upload_indicator {
+      font-size: 0.8rem;
+      width: 140px;
+      overflow: hidden;
+
+      &.full {
+        width: 100%;
+        margin-bottom: 15px;
+
+        .finder {
+          padding: 10px;
+        }
+        .progress {
+          padding: 10px;
+        }
+      }
+
+      .finder {
+        padding: 7px 10px;
+        display: block;
+      }
+      .progress {
+        width: 0%;
+        padding: 6px 10px;
+        background-color: $c_light_blue;
+        @include transition(all, .8s, ease);
+        display: none;
+      }
+      &.active {
+        .finder { display: none; }
+        .progress { display: block; }
+      }
+    }
+
+    form.invisible {
+      visibility: hidden;
+      position: absolute;
+      left: -99999px;
+    }
+
+    input#photo_uploader {
+      position: absolute;
+    }
+
+    button.btn {
+      width: auto;
+      display: inline-block;
+      border: 1px solid $c_border !important;
+      border-radius: 2px !important;
+      color: $c_text !important;
+      font-size: 0.8rem !important;
+      padding: 8px 18px !important;
+      height: auto !important;
+      margin: 0 0.2rem !important;
+      background-color: #ffffff !important;
+      outline: none;
+      &:hover {
+        color: darken($c_text, 20) !important;
+        border-color: darken($c_border_light, 20) !important;
+      }
+    }
+    .snapper {
+      i {
+        display: inline-block;
+        color: $c_text_light;
+        margin: 0 10px;
+      }
+    }
+
+    .group {
+      border: 1px solid $c_border_light;
+      border-radius: 2px;
+      padding: 6px 8px;
+      position: relative;
+      overflow: hidden;
+      input.text {
+        width: 85% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+        outline: none;
+        resize: none;
+        color: $c_text;
+        font-size: 0.9rem;
+        line-height: 1.2;
+      }
+      button.submit {
+        width: 15% !important;
+        height: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        font-size: 0.8rem;
+        border: none !important;
+        border-radius: 0 !important;
+        border-left: 1px solid $c_border_light !important;
+        color: $c_text_light !important;
+        position: absolute;
+        right: 0;
+        top: 0;
+        &:hover {
+          color: $c_text !important;
+        }
+      }
+    }
+
+    .cover-container {
+      div.cover {
+        margin-bottom: 1rem;
+        color: $c_text_light;
+        font-size: 0.9rem;
+        position: relative;
+        div.info {
+          top: 1rem;
+          left: 1rem;
+          border-radius: 4px;
+          padding: 0.5rem 1rem;
+          position: absolute;
+          background-color: white;
+          @include opacity(80);
+          color: #111;
+        }
+      }
+    }
+
+  }
+}
+
+ul.matched_photos {
+  li.matched_photo {
+    text-align: center;
+    margin: 15px;
+    cursor: pointer;
+    .obj {
+      .caption {
+        display: block;
+        font-size: 0.7rem;
+        color: $c_text_light;
+        font-style: italic;
+      }
+    }
+  }
+}
+
+ul.matched_embeds {
+  li.matched_embed {
+    text-align: center;
+    margin: 15px;
+    cursor: pointer;
+    .obj {
+      .caption {
+        display: block;
+        font-size: 0.7rem;
+        color: $c_text_light;
+        font-style: italic;
+      }
+    }
+  }
+}
+
+ul.matched_clips {
+  li.matched_clip {
+    margin: 15px 0;
+    cursor: pointer;
+    .obj {
+      border: 1px solid $c_border;
+      border-radius: 4px;
+      padding: 4px 8px;
+      line-height: 1.5;
+      @include clearfix;
+      figcaption {
+        float: left;
+        font-size: 1rem;
+        color: $c_text_light;
+      }
+      span {
+        float: right;
+        color: $c_text_lighten;
+      }
+    }
+  }
+}
+
+span.redactor-selection-marker {
+  line-height: 0 !important;
+  visibility: hidden;
+}
+
+span#redactor-image-box {
+  outline: none !important;
+  span#redactor-image-resizer {
+    right: 0 !important;
+    bottom: 0 !important;
+  }
+}

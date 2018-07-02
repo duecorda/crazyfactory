@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Crazyfactory</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield :head %>
+    <meta name="viewport" content="user-scalable=yes, width=375" />
+  </head>
+
+  <body>
+    <div id="gnb">
+      <%= link_to "#{icon('fas', 'skull')}소개".html_safe, root_path, class: path_match?(controllers: "main", actions: "index") %><!--
+      --><%= link_to "#{icon('fas', 'tape')}필름".html_safe, films_path, class: path_match?(controllers: "main", actions: "films") %><!--
+      --><%= link_to "#{icon('fas', 'camera-retro')}포토".html_safe, photos_path, class: path_match?(controllers: "main", actions: "photos") %><!--
+      --><%= link_to "#{icon('fas', 'dollar-sign')}견적".html_safe, pricing_path, class: path_match?(controllers: "main", actions: "pricing") %><!--
+      --><%= link_to "#{icon('fas', 'question')}문의".html_safe, ask_path, class: path_match?(controllers: "main", actions: "ask") %>
+    </div>
+
+    <header>
+      <h1><%= link_to "크레이지팩토리", root_path %></h1>
+    </header>
+
+    <section class="main">
+      <%= yield %>
+    </section>
+
+    <footer class="main">
+      <address>
+        <%= link_to SITENAME, root_path %>
+      </address>
+    </footer>
+  </body>
+</html>
