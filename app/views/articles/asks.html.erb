@@ -1,0 +1,11 @@
+<div id="asks" class="nav">
+  <%= link_to "전체", asks_articles_path, class: path_match?(term: nil)  %><!--
+  --><%= link_to "미답변", add_query(term: "wait"), class: path_match?(term: "wait") %><!--
+  --><%= link_to "답변", add_query(term: "answered"), class: path_match?(term: "answered") %>
+</div>
+
+<ul class="asks">
+  <%= render partial: 'articles/ask', collection: @asks %>
+</ul>
+
+

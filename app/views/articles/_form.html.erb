@@ -1,0 +1,97 @@
+<div class="photo_uploader">
+  <%= link_to "#upload_photo", id: "photo_upload_indicator", class: "fn upload_indicator", data: { fn: "do_upload", args: "photo_uploader" } do %>
+    <div class="finder"><%= icon("fas", "search") %> <span>사진 등록</span></div>
+    <div class="progress"><%= icon("fas", "cog") %></div>
+  <% end %>
+
+  <%= form_for Photo.new, :html => { :class => "invisible" } do |f| %>
+    <input id="photo_uploader" type="file" name="files[]" multiple>
+  <% end %>
+</div>
+
+<ul id="uploaded_photos">
+  <% if @article.photos.present? %>
+    <%= render @article.photos %>
+  <% end %>
+</ul>
+
+<%= form_for @article do |f| %>
+  <div class="field">
+    <%= f.hidden_field :photo_ids %>
+  </div>
+
+  <div class="field">
+    <%= f.select :tab, options_for_select(Article.tabs, @article.tab), {}, class: "select" %>
+  </div>
+
+  <div class="field">
+    <%= f.select :category, grouped_options_for_select(Article.categories, @article.category), {}, class: "select" %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :title, class: "text", autocomplete: "off", placeholder: "제목" %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :normal_price, class: "text", autocomplete: "off", placeholder: "정상가격" %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :price, class: "text", autocomplete: "off", placeholder: "할인가격" %>
+  </div>
+
+  <div class="field">
+    <%= f.text_area :content, class: "text smartfocus", placeholder: "내용", autocomplete: "off", rows: 3 %>
+  </div>
+
+  <div class="actions">
+    <%= button_tag class: 'submit' do %>
+      <%= icon("fas", "check") %> <%= @article.new_record? ? "등록" : "수정" %>
+    <% end %>
+  </div>
+
+<% end %>
+
+<script>
+  initFns();
+  $('#photo_uploader').fileupload({
+    url: '/photos',
+    dataType: 'json',
+    paramName: 'photo[attachment][]',
+    sequentialUploads: false,
+    add: function(e, data) {
+      if (/\.(pn|jpe?)?g(if|$)/i.test(data.files[0].name)) {
+        data.submit();
+      } else {
+        alert('png, jpg, gif 만 가능합니다');
+      }
+    },
+    start: function() {
+      $('#photo_upload_indicator').addClass("active");
+    },
+    progressall: function(e, data) {
+      var progress = parseInt(data.loaded / data.total * 100, 10);
+      var progress_min = $('#photo_upload_indicator .progress').width() / $('#photo_upload_indicator').width() * 100;
+      if (progress > progress_min) {
+        $('#photo_upload_indicator .progress').css('width', progress + '%');
+      }
+    },
+    done: function(e, data) {
+      var images = [];
+
+      $.each(data.result.files, function(index, file) {
+        $("ul#uploaded_photos").append(file.html);
+        putCSV("article_photo_ids", file.photo_id);
+      });
+
+    },
+    stop: function(e, data) {
+      $('#photo_upload_indicator .progress').css('width', '100%');
+      setTimeout(function(){
+        $('#photo_upload_indicator').removeClass("active", function() {
+          $(this).find('.progress').css('width', '0%');
+        });
+      }, 500);
+    }
+  }).prop('disabled', !$.support.fileInput).parent().addClass($.support.fileInput ? undefined : 'disabled');
+</script>

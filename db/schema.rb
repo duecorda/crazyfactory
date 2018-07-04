@@ -10,11 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180702014816) do
+ActiveRecord::Schema.define(version: 20180704074918) do
+
+  create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+    t.string "tab"
+    t.string "category"
+    t.string "title"
+    t.string "normal_price"
+    t.string "price"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "asks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.text "content"
-    t.integer "answered"
+    t.integer "question_id", default: 0, null: false
+    t.integer "answered", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "photos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+    t.integer "article_id"
+    t.string "hashkey"
+    t.string "original_filename"
+    t.string "filename"
+    t.string "content_type"
+    t.string "filesize"
+    t.string "dimensions"
+    t.string "positions"
+    t.string "details"
+    t.string "title"
+    t.text "content"
+    t.text "colors"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

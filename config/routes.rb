@@ -4,8 +4,22 @@ Rails.application.routes.draw do
   get "/photos", to: "main#photos", as: 'photos'
   get "/pricing", to: "main#pricing", as: 'pricing'
 
-  resources :asks
+  resources :asks do
+  end
+  resources :photos
 
   root to: "main#index"
+
+  scope '/admin' do
+    resources :articles do
+      collection do
+        get "/asks", action: "asks"
+        get "/answer", action: "new_answer"
+        get "/edit_answer", action: "edit_answer"
+      end
+    end
+
+    get "/", to: "articles#index"
+  end
 
 end

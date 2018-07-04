@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Crazyfactory</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield :head %>
+    <meta name="viewport" content="user-scalable=yes, width=375" />
+  </head>
+
+  <body class="admin">
+    <div id="gnb">
+      <%= link_to "#{icon('fas', 'skull')}사이트".html_safe, articles_path %><!--
+      --><%= link_to "#{icon('fas', 'edit')}콘텐츠".html_safe, articles_path, class: path_match?(controllers: "articles", actions: "index") %><!--
+      --><%= link_to "#{icon('fas', 'question')}문의".html_safe, asks_articles_path, class: path_match?(controllers: "articles", actions: "asks") %>
+    </div>
+
+    <header>
+      <h1><%= link_to "WRV", articles_path %></h1>
+    </header>
+
+    <section class="main">
+      <%= yield %>
+    </section>
+
+    <footer class="main">
+      <address>
+        <%= link_to SITENAME, root_path %>
+      </address>
+    </footer>
+  </body>
+</html>
+

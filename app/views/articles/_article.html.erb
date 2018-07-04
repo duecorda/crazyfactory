@@ -1,0 +1,21 @@
+<li id="<%= dom_id(article) %>" class="article">
+
+  <%= link_to edit_article_path(article) do %>
+  <div class="thumb">
+    <% article.photos.each do |p| %>
+      <%= image_tag(p.url(:thumb)) %>
+    <% end %>
+  </div>
+
+  <div class="detail">
+    <div class="info"><%= article.tab_name %> <%= article.category_name %></div>
+    <h4><%= article.title %></h4>
+
+    <div class="content"><%= article.content %></div>
+    <% if article.price.present? %>
+      <div class="price">가격: <%= article.price%> <%= "<del>#{article.normal_price}</del>" if article.normal_price.present? %></div>
+    <% end %>
+  </div>
+  <% end %>
+
+</li>

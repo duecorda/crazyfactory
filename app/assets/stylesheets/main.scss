@@ -1,5 +1,49 @@
+html, body {
+  height: 100%;
+}
+
 body {
   width: 375px;
+  margin: 0 auto;
+  background-color: #fafafa;
+}
+
+form {
+  padding: 8px 8px 0 7px;
+  .field {
+    margin-bottom: 5px;
+  }
+  select.select {
+    border: 1px solid #c7c7c7;
+    font-size: medium;
+    padding: 8px 8px 8px 7px;
+    line-height: 1.4;
+    color: #111;
+    width: 100%;
+    resize: none;
+    background-color: #fafafa;
+    border-radius: none;
+  }
+  textarea.text, input.text {
+    border: 1px solid #c7c7c7;
+    font-size: medium;
+    padding: 8px 8px 8px 7px;
+    line-height: 1.4;
+    color: #111;
+    width: 100%;
+    resize: none;
+    border-radius: none;
+  }
+  .actions {
+    button.submit {
+      width: 100%;
+      border: 1px solid #c7c7c7;
+      background-color: #fafafa;
+      line-height: 1.5;
+      padding: 8px;
+      font-size: medium;
+    }
+  }
 }
 
 #gnb {
@@ -7,9 +51,10 @@ body {
   bottom: 0;
   background-color: white;
   padding-top: 15px;
+  height: 56px + 15px;
   @include opacity(100);
   box-shadow: 0px 5px 20px #333;
-  z-index: 9999;
+  z-index: 8;
   a {
     display: inline-block;
     width: 75px;
@@ -41,7 +86,7 @@ header {
   left: 0;
   right: 0;
   background-color: white;
-  z-index: 9999;
+  z-index: 8;
   h1 {
     a {
       color: $c_text_main;
@@ -54,9 +99,11 @@ header {
 }
 
 section {
+  min-height: 100%;
   padding: 0;
   margin-top: 65px;
-  margin-bottom: 100px;
+  padding-bottom: 100px;
+  background-color: white;
 
   div.wrapper {
     margin-bottom: 15px;
@@ -122,28 +169,6 @@ section {
     h5 {
       border: none;
       padding: 8px 8px 8px 7px;
-    }
-
-    form {
-      padding: 8px 8px 0 7px;;
-      textarea.text {
-        border: 1px solid #c7c7c7;
-        font-size: medium;
-        padding: 8px 8px 8px 7px;
-        line-height: 1.4;
-        color: #111;
-        width: 100%;
-        resize: none;
-      }
-      .actions {
-        button.submit {
-          width: 100%;
-          border: 1px solid #c7c7c7;
-          background-color: #fafafa;
-          line-height: 1.5;
-          padding: 8px;
-        }
-      }
     }
   }
 

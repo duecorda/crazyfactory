@@ -1,0 +1,38 @@
+<div id="tabs" class="nav">
+  <%= link_to "전체", articles_path, class: path_match?(tab: nil) %><!--
+  --><%= link_to "필름", add_query(tab: "films", cate: nil), class: path_match?(tab: "films") %><!--
+  --><%= link_to "포토", add_query(tab: "photos", cate: nil), class: path_match?(tab: "photos") %><!--
+  --><%= link_to "견적", add_query(tab: "pricing", cate: nil), class: path_match?(tab: "pricing") %>
+</div>
+
+<% if params[:tab].present? && params[:tab] == "films" %>
+<div id="films" class="nav categories">
+  <%= link_to "카본", add_query(cate: "carbon"), class: path_match?(cate: "carbon") %><!--
+  --><%= link_to "우드", add_query(cate: "wood"), class: path_match?(cate: "wood") %><!--
+  --><%= link_to "기타", add_query(cate: "etc"), class: path_match?(cate: "etc") %>
+</div>
+<% end %>
+
+<% if params[:tab].present? && params[:tab] == "photos" %>
+<div id="photos" class="nav categories">
+  <%= link_to "국산차", add_query(cate: "domestic"), class: path_match?(cate: "domestic") %><!--
+  --><%= link_to "외제차", add_query(cate: "imported"), class: path_match?(cate: "imported") %>
+</div>
+<% end %>
+
+<% if params[:tab].present? && params[:tab] == "pricing" %>
+<div id="pricing" class="nav categories">
+  <%= link_to "경차", add_query(cate: "compact"), class: path_match?(cate: "compact") %><!--
+  --><%= link_to "중형차", add_query(cate: "midsize"), class: path_match?(cate: "midsize") %><!--
+  --><%= link_to "대형차", add_query(cate: "fullsize"), class: path_match?(cate: "fullsize") %><!--
+  --><%= link_to "외제차", add_query(cate: "imported"), class: path_match?(cate: "imported") %>
+</div>
+<% end %>
+
+<div id="action-button">
+  <%= link_to "콘텐츠등록", new_article_path, class: "button" %>
+</div>
+
+<ul class="articles">
+  <%= render @articles %>
+</ul>

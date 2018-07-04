@@ -1,0 +1,9 @@
+<li id="<%= dom_id(photo) %>" class="photo">
+  <figure>
+    <%= image_tag(photo.url(:thumb)) %>
+    <figcaption>
+      <%= photo.original_filename %>
+      <%= link_to "삭제", photo_path(photo), method: :delete, remote: true, confirm: "삭제?", class: "button" %>
+    </figcaption>
+  </figure>
+</li>

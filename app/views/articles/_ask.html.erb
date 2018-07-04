@@ -1,0 +1,18 @@
+<li class="ask">
+  <div class="content">
+    <%= nl2br ask.content %>
+  </div>
+  <% if ask.answered? %>
+    <div class="answer">
+      ㄴ <%= nl2br ask.answer.content %>
+    </div>
+    <div class="action">
+      <%= link_to "답변수정", edit_answer_articles_path(ask_id: ask.id, answer_id: ask.answer.id), class: "button" %>
+    </div>
+  <% else %>
+    <div class="action">
+      <%= link_to "답변하기", answer_articles_path(ask_id: ask.id), class: "button" %>
+    </div>
+  <% end %>
+</li>
+

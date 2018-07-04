@@ -1,0 +1,16 @@
+<li>
+  <span class="date"><%= ask.created_at.strftime("%Y.%m.%d") %></span> 
+  <div class="content">
+    <%= ask.content %>
+
+    <% if ask.answered? %>
+      <div class="answer">
+        <strong>크팩의 답변</strong>
+        <div class="content">
+          <%= ask.answer.content %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</li>

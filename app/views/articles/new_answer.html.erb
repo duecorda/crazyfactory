@@ -1,0 +1,26 @@
+<ul class="asks">
+  <li class="ask nb">
+    <div class="content">
+      <%= @question.content %>
+    </div>
+  </li>
+</ul>
+
+<div class="ask">
+  <%= form_for @ask do |f| %>
+    <%= f.hidden_field :question_id %>
+    <%= f.hidden_field :answered %>
+
+    <div class="field">
+      <%= f.text_area :content, class: "text smartfocus", placeholder: "답변을 여기에 입력해주세요.", autocomplete: "off", rows: 5 %>
+    </div>
+
+    <div class="actions">
+      <%= button_tag class: 'submit' do %>
+        <%= icon("fas", "check") %> <%= @ask.new_record? ? "답변등록" : "답변등록" %>
+      <% end %>
+    </div>
+
+  <% end %>
+</div>
+
