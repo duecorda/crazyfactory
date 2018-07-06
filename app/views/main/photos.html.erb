@@ -7,71 +7,35 @@
 <ul class="list">
 
   <% if params[:cate].blank? || params[:cate] == "imported" %>
-  <li>
-    <%= link_to image_tag("/images/cari01.jpg"), image_path("/images/cari01.jpg") %>
-    <div class="exp">
-      <h5><span>수입차 01</span></h5>
-      <div class="desc">백미러 카본-03 / 대쉬보드 카본-01 / 도어 카본 -01</div>
-    </div>
-  </li>
-
-  <li>
-    <%= link_to image_tag("/images/cari02.jpg"), image_path("/images/cari02.jpg") %>
-    <div class="exp">
-      <h5><span>수입차 02</span></h5>
-      <div class="desc">백미러 카본-03 / 대쉬보드 카본-01 / 도어 카본 -01</div>
-    </div>
-  </li>
-
-  <li>
-    <%= link_to image_tag("/images/cari03.jpg"), image_path("/images/cari03.jpg") %>
-    <div class="exp">
-      <h5><span>수입차 03</span></h5>
-      <div class="desc">백미러 카본-03 / 대쉬보드 카본-01 / 도어 카본 -01</div>
-    </div>
-  </li>
-
-  <li>
-    <%= link_to image_tag("/images/cari04.jpg"), image_path("/images/cari04.jpg") %>
-    <div class="exp">
-      <h5><span>수입차 04</span></h5>
-      <div class="desc">백미러 카본-03 / 대쉬보드 카본-01 / 도어 카본 -01</div>
-    </div>
-  </li>
-
-  <li>
-    <%= link_to image_tag("/images/cari05.jpg"), image_path("/images/cari05.jpg") %>
-    <div class="exp">
-      <h5><span>수입차 05</span></h5>
-      <div class="desc">백미러 카본-03 / 대쉬보드 카본-01 / 도어 카본 -01</div>
-    </div>
-  </li>
+    <% Article.where(tab: "photos", category: "imported").each do |a| %>
+      <li>
+        <% a.photos.each do |photo| %>
+        <%= link_to image_tag(photo.url(:thumb)), photo.url(:thumb) %>
+        <% end %>
+        <div class="exp">
+          <h5><span><%= a.title %></span></h5>
+          <% if a.content.present? %>
+            <div class="desc"><%= nl2br(a.content) %></div>
+          <% end %>
+        </div>
+      </li>
+    <% end %>
   <% end %>
 
   <% if params[:cate].blank? || params[:cate] == "domestic" %>
-  <li>
-    <%= link_to image_tag("/images/card01.jpg"), image_path("/images/card01.jpg") %>
-    <div class="exp">
-      <h5><span>국산차 01</span></h5>
-      <div class="desc">백미러 카본-03 / 대쉬보드 카본-01 / 도어 카본 -01</div>
-    </div>
-  </li>
-
-  <li>
-    <%= link_to image_tag("/images/card02.jpg"), image_path("/images/card02.jpg") %>
-    <div class="exp">
-      <h5><span>국산차 02</span></h5>
-      <div class="desc">백미러 카본-03 / 대쉬보드 카본-01 / 도어 카본 -01</div>
-    </div>
-  </li>
-
-  <li>
-    <%= link_to image_tag("/images/card03.jpg"), image_path("/images/card03.jpg") %>
-    <div class="exp">
-      <h5><span>국산차 03</span></h5>
-      <div class="desc">백미러 카본-03 / 대쉬보드 카본-01 / 도어 카본 -01</div>
-    </div>
-  </li>
+    <% Article.where(tab: "photos", category: "domestic").each do |a| %>
+      <li>
+        <% a.photos.each do |photo| %>
+        <%= link_to image_tag(photo.url(:thumb)), photo.url(:thumb) %>
+        <% end %>
+        <div class="exp">
+          <h5><span><%= a.title %></span></h5>
+          <% if a.content.present? %>
+            <div class="desc"><%= nl2br(a.content) %></div>
+          <% end %>
+        </div>
+      </li>
+    <% end %>
   <% end %>
 
 </ul>
