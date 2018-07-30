@@ -51,6 +51,7 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    params[:article][:photo_ids] = params[:article][:photo_ids].split(",")
     @article = Article.find(params[:id])
 
     if @article.update_attributes(article_params)

@@ -1,0 +1,22 @@
+<header>
+  <h1><%= link_to article.title.to_s.truncate(10), "" %></h1>
+  <%= link_to icon("fas", "times"), "", class: "fn coverCloser", data: { fn: "closeCover" } %>
+</header>
+
+<section class="insideCover">
+  <% article.photos.each do |photo| %>
+    <%= image_tag(photo.url(:thumb)) %>
+  <% end %>
+
+  <ul class="list">
+    <li>
+      <div class="exp">
+        <h5><span><%= article.title %></span></h5>
+        <% if article.content.present? %>
+          <div class="desc"><%= nl2br(article.content) %></div>
+        <% end %>
+      </div>
+    </li>
+  </ul>
+
+</section>

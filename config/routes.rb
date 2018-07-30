@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   get "/photos", to: "main#photos", as: 'photos'
   get "/pricing", to: "main#pricing", as: 'pricing'
 
-  resources :asks do
-  end
+  get "/show/:id", to: "main#show", as: 'show'
+
+  resources :asks
   resources :photos
 
   root to: "main#index"

@@ -18,10 +18,12 @@
       --><%= link_to "#{icon('fas', 'question')}문의".html_safe, new_ask_path, class: path_match?(controllers: "asks") %>
     </div>
 
+
     <header>
       <h1><%= link_to "크레이지팩토리", root_path %></h1>
     </header>
 
+    <div id="fullcover"></div>
     <section class="main">
       <%= yield %>
     </section>

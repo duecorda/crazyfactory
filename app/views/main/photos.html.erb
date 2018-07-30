@@ -6,36 +6,20 @@
 
 <ul class="list">
 
-  <% if params[:cate].blank? || params[:cate] == "imported" %>
-    <% Article.where(tab: "photos", category: "imported").each do |a| %>
-      <li>
-        <% a.photos.each do |photo| %>
-        <%= link_to image_tag(photo.url(:thumb)), photo.url(:thumb) %>
-        <% end %>
-        <div class="exp">
-          <h5><span><%= a.title %></span></h5>
-          <% if a.content.present? %>
-            <div class="desc"><%= nl2br(a.content) %></div>
-          <% end %>
-        </div>
-      </li>
-    <% end %>
-  <% end %>
+  <% @photos.each do |a| %>
+    <li id="<%= dom_id(a) %>">
 
-  <% if params[:cate].blank? || params[:cate] == "domestic" %>
-    <% Article.where(tab: "photos", category: "domestic").each do |a| %>
-      <li>
-        <% a.photos.each do |photo| %>
-        <%= link_to image_tag(photo.url(:thumb)), photo.url(:thumb) %>
+      <% if a.photos.length > 0 %>
+      <%= link_to image_tag(a.photos.first.url(:thumb)), show_path(a), data: { remote: true } %>
+      <% end %>
+
+      <div class="exp">
+        <h5><span><%= a.title %></span></h5>
+        <% if a.content.present? %>
+          <div class="desc"><%= nl2br(a.content) %></div>
         <% end %>
-        <div class="exp">
-          <h5><span><%= a.title %></span></h5>
-          <% if a.content.present? %>
-            <div class="desc"><%= nl2br(a.content) %></div>
-          <% end %>
-        </div>
-      </li>
-    <% end %>
+      </div>
+    </li>
   <% end %>
 
 </ul>
